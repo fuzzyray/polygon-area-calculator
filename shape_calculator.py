@@ -1,44 +1,59 @@
 class Rectangle:
     def __init__(self, width, height):
-        pass
+        self.width = width
+        self.height = height
 
     def __repr__(self):
-        return super().__repr__()
+        return "Rectangle(width={}, height={})".format(self.width, self.height)
 
     def set_width(self, width):
-        pass
+        self.width = width
 
     def set_height(self, height):
-        pass
+        self.height = height
 
     def get_area(self):
-        pass
+        return self.width * self.height
 
     def get_perimeter(self):
-        pass
+        return (2 * self.width) + (2 * self.height)
 
     def get_diagonal(self):
-        pass
+        return (self.width ** 2 + self.height ** 2) ** 0.5
 
     def get_picture(self):
-        pass
+
+        if self.width > 50 or self.height > 50:
+            return "Too big for picture."
+
+        output = ""
+        for i in range(self.height):
+            output += "*" * self.width + "\n"
+
+        return output
 
     def get_amount_inside(self, shape):
-        pass
+        fit_in_width = self.width // shape.width
+        fit_in_height = self.height // shape.height
+        return fit_in_width * fit_in_height
+
 
 class Square(Rectangle):
     def __init__(self, side):
+        self.side = side
         super().__init__(side, side)
         pass
+
+    def __repr__(self):
+        return "Square(side={})".format(self.side)
 
     def set_height(self, height):
         self.set_side(height)
 
     def set_width(self, width):
         self.set_side(width)
-        super().set_width(width)
 
     def set_side(self, side):
+        self.side = side
         super().set_width(side)
         super().set_height(side)
-
